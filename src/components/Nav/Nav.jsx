@@ -78,7 +78,7 @@ export default function Nav() {
                     history.push('/trips');
                   }}
                 >
-                  Home
+                  My Trips
                 </button>
                 </MenuItem>
                 <MenuItem>

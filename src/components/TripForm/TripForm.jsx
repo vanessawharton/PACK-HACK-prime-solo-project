@@ -17,7 +17,10 @@ function TripForm() {
         type: 'ADD_TRIP',
         payload: {
         tripTitle: tripTitle,
+        startDate: startDate,
+        endDate: endDate,
         location: location,
+        packingList: packingList
         },
     });
     }; // end addTrip
@@ -91,7 +94,7 @@ function TripForm() {
         </label>
         </div>
         <div>
-        <input className="btn" type="submit" name="save" />
+            <input className="btn" type="submit" name="save" />
         </div>
     </form>
     );

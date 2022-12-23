@@ -1,13 +1,29 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {useSelector} from 'react-redux';
+import { useHistory } from 'react-router';
+import TripView from '../TripView/TripView';
 
 function TripsPage() {
     const trips = useSelector((store) => store.trips);
-    
+    const history = useHistory();
+
+        // GET all trips on page load
+        // useEffect(() => {
+        //     dispatch({ type: 'FETCH_TRIPS'});
+        // }, []);
+
     return (
         <div className="trip-container">
             <h2>My Trips</h2>
-            <button>+</button>
+            <button 
+                type="button" 
+                onClick={() => {history.push('/addtrip');}}
+                >+</button>
+            {/* <section className="trips">
+                {trips.map(trip => (
+                        <TripView key={trip.id} trip={trip} />
+                    ))}
+            </section> */}
         </div>
     );
 }

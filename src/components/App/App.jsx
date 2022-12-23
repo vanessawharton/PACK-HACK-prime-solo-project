@@ -18,6 +18,7 @@ import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 import TripsPage from '../TripsPage/TripsPage';
+import TripForm from '../TripForm/TripForm';
 
 import './App.css';
 
@@ -57,6 +58,14 @@ function App() {
             path="/trips"
           >
             <TripsPage />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            // logged in shows TripForm
+            exact
+            path="/addtrip"
+          >
+            <TripForm />
           </ProtectedRoute>
 
           <Route
