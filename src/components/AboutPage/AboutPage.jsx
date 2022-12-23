@@ -8,10 +8,28 @@ import React from 'react';
 function AboutPage() {
   return (
     <div className="container">
-      <div>
-        <p>This about page is for anyone to read!</p>
+      <h3>Technologies Used:</h3>
+        <ul>
+          <li>Node</li>
+          <li>Express</li>
+          <li>React</li>
+          <li>PostgreSQL</li>
+          <li>Heroku</li>
+          <li>Git</li>
+          <li>GitHub</li>
+          <li>Figma</li>
+          <li>Postico</li>
+          <li>Javascript</li>
+          <li>HTML</li>
+          <li>CSS</li>
+          <li>Nodemon</li>
+          <li>Passport JS</li>
+          <li>Redux-saga</li>
+          <li>Material-UI</li>
+          <li>Day.js</li>
+          <li>Sweetalert</li>
+        </ul>
       </div>
-    </div>
   );
 }
 
