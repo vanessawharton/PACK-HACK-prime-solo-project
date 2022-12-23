@@ -65,7 +65,7 @@ function App() {
           >
             {user.id ?
               // If the user is already logged in, 
-              // redirect to the /user page
+              // redirect to the /trips page
               <Redirect to="/trips" />
               :
               // Otherwise, show the login page
@@ -79,7 +79,7 @@ function App() {
           >
             {user.id ?
               // If the user is already logged in, 
-              // redirect them to the /user page
+              // redirect them to the /trips page
               <Redirect to="/trips" />
               :
               // Otherwise, show the registration page
@@ -93,7 +93,7 @@ function App() {
           >
             {user.id ?
               // If the user is already logged in, 
-              // redirect them to the /user page
+              // redirect them to the /trips page
               <Redirect to="/trips" />
               :
               // Otherwise, show the Landing page

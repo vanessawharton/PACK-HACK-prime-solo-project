@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import { Link } from 'react-router-dom';
 import LogOutButton from '../LogOutButton/LogOutButton';
 import './Nav.css';
@@ -6,66 +6,104 @@ import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router';
 
 // material-UI components
-// import { makeStyles } from '@material-ui/core/styles';
-// import AppBar from '@material-ui/core/AppBar';
-// import Toolbar from '@material-ui/core/Toolbar';
+import AppBar from '@mui/material/AppBar';
+import Box from '@mui/material/Box';
+import Toolbar from '@mui/material/Toolbar';
+import Button from '@mui/material/Button';
+import IconButton from '@mui/material/IconButton';
+import MenuIcon from '@mui/icons-material/Menu';
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
 
-// const useStyles = makeStyles((theme) => ({
-//   root: {
-//       flexGrow: 1,
-//   },
-//   menuButton: {
-//       marginRight: theme.spacing(2),
-//   },
-//   title: {
-//       flexGrow: 1,
-//   },
-// }));
+export default function Nav() {
 
-function Nav() {
   const user = useSelector((store) => store.user);
-  // const classes = useStyles();
   const history = useHistory();
 
-  const navHome = () => {
-    history.push('/')
-}
-
   return (
-    // <div className={classes.root}>
     <div className="nav">
-      {/* <AppBar position="static">
+    <Box sx={{ flexGrow: 1 }}>
+      <AppBar position="static">
         <Toolbar>
-          <button onClick={navHome}>Home</button>
+          {/* <IconButton
+            size="large"
+            edge="start"
+            color="inherit"
+            aria-label="menu"
+            sx={{ mr: 2 }}
+          > */}
+            <MenuIcon />
+            {/* <Menu
+              id="basic-menu"
+              open={open}
+            > */}
+
+            {/* If no user is logged in, show these links */}
+            {!user.id && (
+              // If there's no user, show login/registration links
+              <>
+              <MenuItem>
+                <button
+                  type="button"
+                  className="btn btn_asLink"
+                  onClick={() => {
+                    history.push('/login');
+                  }}
+                >
+                  Login / Register
+                </button>
+              </MenuItem>
+              <MenuItem>
+                <button
+                  type="button"
+                  className="btn btn_asLink"
+                  onClick={() => {
+                    history.push('/about');
+                  }}
+                >
+                  About
+                </button>
+              </MenuItem>
+              </>
+            )}
+
+            {/* If a user is logged in, show these links */}
+            {user.id && (
+              <>
+                <MenuItem>
+                  <button
+                  type="button"
+                  className="btn btn_asLink"
+                  onClick={() => {
+                    history.push('/trips');
+                  }}
+                >
+                  Home
+                </button>
+                </MenuItem>
+                <MenuItem>
+                  <button
+                  type="button"
+                  className="btn btn_asLink"
+                  onClick={() => {
+                    history.push('/about');
+                  }}
+                >
+                  About
+                </button>
+                </MenuItem>
+                <MenuItem>
+                  <LogOutButton className="navLink" />
+                </MenuItem>
+              </>
+            )}
+
+            {/* </Menu> */}
+          {/* </IconButton> */}
+          <img style={{ width: 200, height: 150 }} src="/images/PACKHACKInvertedColor2000x1500.png" />
         </Toolbar>
-      </AppBar> */}
-        <img style={{ width: 200, height: 150 }} src="/images/PACKHACKInvertedColor2000x1500.png" />
-      <div>
-        {/* If no user is logged in, show these links */}
-        {!user.id && (
-          // If there's no user, show login/registration links
-          <Link className="navLink" to="/login">
-            Login / Register
-          </Link>
-        )}
-
-        {/* If a user is logged in, show these links */}
-        {user.id && (
-          <>
-            <Link className="navLink" to="/trips">
-              Home
-            </Link>
-
-            <LogOutButton className="navLink" />
-          </>
-        )}
-
-        <Link className="navLink" to="/about">
-          About
-        </Link>
-      </div>
+      </AppBar>
+    </Box>
     </div>
   );
 }
-
-export default Nav;
