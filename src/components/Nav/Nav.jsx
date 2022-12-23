@@ -10,7 +10,7 @@ function Nav() {
   return (
     <div className="nav">
       <Link to="/home">
-        <h2 className="nav-title">Prime Solo Project</h2>
+        <img src='images/PACK HACK Inverted Color 2000x1500.png' />
       </Link>
       <div>
         {/* If no user is logged in, show these links */}
@@ -27,11 +27,7 @@ function Nav() {
             <Link className="navLink" to="/user">
               Home
             </Link>
-
-            <Link className="navLink" to="/info">
-              Info Page
-            </Link>
-
+            
             <LogOutButton className="navLink" />
           </>
         )}
