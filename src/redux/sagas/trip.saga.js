@@ -19,7 +19,7 @@ function* fetchSelectedTrip(action) {
     const selectedTripId = action.payload;
 
     try {
-        const trip = yield axios.get(`/api/details/${selectedTripId}`);
+        const trip = yield axios.get(`/api/trips/${selectedTripId}`);
 
         // send trip data to reducer as an array
         yield put({ type: 'SET_TRIPS', payload: trip.data});

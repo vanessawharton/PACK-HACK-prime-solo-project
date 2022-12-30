@@ -25,11 +25,11 @@ function TripDetails() {
             <h3>{trip?.title}</h3>
             <br />
             <p>{trip?.location}</p>
-            <p>{trip?.startDate}</p>
-            <p>{trip?.endDate}</p>
+            <p>{trip?.start_date}</p>
+            <p>{trip?.end_date}</p>
             <p>{trip?.packingList}</p>
-            {/* <button className='editPageBtn' onClick={() => history.push(`/edit/${id}`)}>Edit</button> */}
-            {/* <button className="homeBtn" onClick={() => history.push('/trips')}>Return to My Trips</button> */}
+            <button className='editPageBtn' onClick={() => history.push(`/edit/${id}`)}>Edit</button>
+            <button className="homeBtn" onClick={() => history.push('/trips')}>Return to My Trips</button> 
         </div>
     );
 }

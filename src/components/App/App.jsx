@@ -19,6 +19,8 @@ import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 import TripsPage from '../TripsPage/TripsPage';
 import TripForm from '../TripForm/TripForm';
+import TripDetails from '../TripDetails/TripDetails';
+import EditTrip from '../EditTrip/EditTrip';
 
 import './App.css';
 
@@ -66,6 +68,12 @@ function App() {
             path="/addtrip"
           >
             <TripForm />
+          </ProtectedRoute>
+
+          <ProtectedRoute path='/trips/:id' children={<TripDetails />}>
+          </ProtectedRoute>
+
+          <ProtectedRoute path='/edit/:id' children={<EditTrip />}>
           </ProtectedRoute>
 
           <Route

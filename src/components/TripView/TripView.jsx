@@ -11,7 +11,7 @@ function TripView( {trip} ) {
     const history = useHistory();
 
     const handleClick = () => {
-        history.push(`/details/${trip.id}`);
+        history.push(`/trips/${trip.id}`);
     }
 
     return (
