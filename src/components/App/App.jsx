@@ -76,6 +76,27 @@ function App() {
           <ProtectedRoute path='/edit/:id' children={<EditTrip />}>
           </ProtectedRoute>
 
+          <ProtectedRoute
+            exact
+            path="/packinglists"
+          >
+            <PackingListsPage />
+          </ProtectedRoute>
+
+          {/* <ProtectedRoute
+            exact
+            path="/addpackinglist"
+          >
+            <PackingListForm /> */}
+          {/* </ProtectedRoute> */}
+
+          <ProtectedRoute path='/packinglists/:id' children={<PackingListView />}>
+          </ProtectedRoute>
+          {/* 
+          <ProtectedRoute path='/packinglists/edit/:id' children={<EditPackingList />}>
+          </ProtectedRoute> */}
+
+
           <Route
             exact
             path="/login"

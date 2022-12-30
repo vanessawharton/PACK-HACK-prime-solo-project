@@ -86,6 +86,17 @@ export default function Nav() {
                   type="button"
                   className="btn btn_asLink"
                   onClick={() => {
+                    history.push('/packinglists');
+                  }}
+                >
+                  My Packing Lists
+                </button>
+                </MenuItem>
+                <MenuItem>
+                  <button
+                  type="button"
+                  className="btn btn_asLink"
+                  onClick={() => {
                     history.push('/about');
                   }}
                 >
