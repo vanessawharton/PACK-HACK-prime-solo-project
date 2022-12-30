@@ -29,13 +29,13 @@ function* fetchSelectedTrip(action) {
 }
 
 function* addTrip(action) {
+    console.log('in addTrip, action.payload:', action.payload);
     try {
-
-    const response = yield axios.post('/api/trips', action.payload);
+        yield axios.post('/api/trips', action.payload);
     // update state for DB data with new trip
-        yield put ({ type: fetchTrips });
-    }catch{
-        console.log('Post new trip error');
+        yield put ({ type: 'FETCH_TRIPS'});
+    }catch(err) {
+        console.log('Post new trip error', err);
     }
 }
 
@@ -62,7 +62,7 @@ function* editTrip(action) {
     }
 }
 
-function* tripSaga() {
+function* tripSaga(action) {
     yield takeLatest('FETCH_TRIPS', fetchTrips);
     yield takeLatest('FETCH_SELECT_TRIP', fetchSelectedTrip);
     yield takeLatest('ADD_TRIP', addTrip);

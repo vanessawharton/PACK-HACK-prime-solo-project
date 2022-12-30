@@ -37,31 +37,26 @@ router.get('/:id', (req, res) => {
 
 // POST-- add a new trip to the DB
 router.post('/', (req, res) => {
-    console.log('in Post, req.body is: ', req.body);
-    // RETURNING "id" will give us back the id of the created trip
+    console.log('in Post, req.body is: ', req.body, 'req.user is:', req.user);
     const insertTripQuery = `
-    INSERT INTO "trips" ("title", "start_date", "end_date", "location")
-    VALUES ($1, $2, $3, $4)
-    RETURNING "id";`
+        INSERT INTO "trips" ("title", "start_date", "end_date", "location", "user_id")
+        VALUES ($1, $2, $3, $4, $5)
+        RETURNING "id";
+    `;
 
-    // FIRST QUERY MAKES TRIP
-    pool.query(insertTripQuery, [req.body.newTrip.title, req.body.newTrip.start_date, req.body.newTrip.end_date, req.body.newTrip.location])
-    .then(result => {
-        
-    //added trip id save to junction table
-    const createdTripId = result.rows[0].id;
-
-    // Catch for first query
+    pool.query(insertTripQuery, [req.body.title, req.body.startDate, req.body.endDate, req.body.location, req.user.id])
+    .then(() => {
+        res.sendStatus(201);
     }).catch(err => {
         console.log(err);
-        res.sendStatus(500)
-    })
+        res.sendStatus(500);
+    });
 });
 
 // PUT request to edit trip details
 router.put('/:id', (req, res) => {
     console.log('in PUT request', req.params.id, req.body);
-    const query = `UPDATE "trip" SET "title" = $1, "start_date" = $2, "end_date" = $3, "location" = $5 WHERE "id" = $6;`;
+    const query = `UPDATE "trips" SET "title" = $1, "start_date" = $2, "end_date" = $3, "location" = $5 WHERE "id" = $6;`;
     // set up values
     const values = [req.body.title, req.body.startDate, req.body.endDate, req.body.location, req.params.id];
     // send query to DB

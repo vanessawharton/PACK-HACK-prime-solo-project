@@ -10,15 +10,14 @@ function TripForm() {
     const [startDate, setStartDate] = useState('');
     const [endDate, setEndDate] = useState('');
     const [location, setLocation] = useState('');
-    const [packingList, setPackingList] = useState('');
+    // const [packingList, setPackingList] = useState('');
 
     const tripDetails = {
         title: title,
-        startDate: startDate,
-        endDate: endDate,
+        start_date: startDate,
+        end_date: endDate,
         location: location,
-        packingList: packingList
-    }
+    };
 
     const addTrip = (event) => {
         event.preventDefault();
@@ -44,11 +43,11 @@ function TripForm() {
             </label>
         </div>
         <div>
-            <label htmlFor="startdate">
+            <label htmlFor="startDate">
                 Start Date:
                 <input
                 type="text"
-                name="startdate"
+                name="startDate"
                 value={startDate}
                 required
                 onChange={(event) => setStartDate(event.target.value)}
@@ -56,11 +55,11 @@ function TripForm() {
             </label>
         </div>
         <div>
-            <label htmlFor="enddate">
+            <label htmlFor="endDate">
                 End Date:
                 <input
                 type="text"
-                name="enddate"
+                name="endDate"
                 value={endDate}
                 required
                 onChange={(event) => setEndDate(event.target.value)}
@@ -79,7 +78,7 @@ function TripForm() {
                 />
             </label>
         </div>
-        <div>
+        {/* <div>
             <label htmlFor="packinglistoption">
                 Packing List:
                 <input
@@ -90,7 +89,7 @@ function TripForm() {
                 onChange={(event) => setPackingList(event.target.value)}
                 />
             </label>
-        </div>
+        </div> */}
         <div>
             <input className="add-trip-btn" type="submit" name="Save" />
         </div>
