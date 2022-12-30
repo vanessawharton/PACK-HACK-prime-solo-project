@@ -19,6 +19,7 @@ function TripView( {trip} ) {
             <Card key={trip?.id} onClick={handleClick}>
                 <CardContent>
                     {trip?.title}
+                    <br />
                     // ADD COUNTDOWN
                 </CardContent>
             </Card>

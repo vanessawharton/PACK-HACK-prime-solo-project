@@ -12,6 +12,22 @@ function* fetchTrips(action) {
     }
 }
 
+function* fetchSelectedTrip(action) {
+    //get selected(clicked) trip from the DB
+
+    //Need to pull in DB id
+    const selectedTripId = action.payload;
+
+    try {
+        const trip = yield axios.get(`/api/details/${selectedTripId}`);
+
+        // send trip data to reducer as an array
+        yield put({ type: 'SET_TRIPS', payload: trip.data});
+    } catch{
+        console.log('Selected trip GET error');
+    }
+}
+
 function* addTrip(action) {
     try {
 
@@ -48,6 +64,7 @@ function* editTrip(action) {
 
 function* tripSaga() {
     yield takeLatest('FETCH_TRIPS', fetchTrips);
+    yield takeLatest('FETCH_SELECT_TRIP', fetchSelectedTrip);
     yield takeLatest('ADD_TRIP', addTrip);
     yield takeLatest('DELETE_TRIP', deleteTrip);
     yield takeLatest('EDIT_TRIP', editTrip);

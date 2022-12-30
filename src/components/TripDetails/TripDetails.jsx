@@ -16,7 +16,7 @@ function TripDetails() {
 
     // Pull data on navigation to page or reload
     useEffect(() => {
-        dispatch({ type: 'FETCH_SELECTED', payload: id});
+        dispatch({ type: 'FETCH_SELECT_TRIP', payload: id});
     }, [])
 
 
