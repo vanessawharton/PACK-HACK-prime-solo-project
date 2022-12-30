@@ -23,9 +23,34 @@ function* addTrip(action) {
     }
 }
 
+function* deleteTrip(action) {
+	console.log(action.payload);
+	try {
+		console.log('in deleteTrip');
+		yield axios.delete('/api/trips/' + action.payload.id);
+		
+		yield put({type: 'FETCH_TRIPS'});
+	} catch(err){
+		console.log('error deleting', err);
+	}
+}
+
+function* editTrip(action) {
+    console.log('in trip.saga editTrip', action.payload);
+    try {
+        yield axios.put('/api/trips/' + action.payload.id, action.payload);
+        yield put({type: 'FETCH_TRIPS'});
+    }
+    catch (error) {
+        console.log('error in trip.saga editTrip', error);
+    }
+}
+
 function* tripSaga() {
     yield takeLatest('FETCH_TRIPS', fetchTrips);
     yield takeLatest('ADD_TRIP', addTrip);
+    yield takeLatest('DELETE_TRIP', deleteTrip);
+    yield takeLatest('EDIT_TRIP', editTrip);
 }
 
 export default tripSaga;

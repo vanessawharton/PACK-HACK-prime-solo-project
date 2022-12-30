@@ -4,7 +4,7 @@ import { useHistory } from 'react-router';
 
 function TripForm() {
     const history = useHistory();
-    const [tripTitle, setTripTitle] = useState('');
+    const [title, setTitle] = useState('');
     const [startDate, setStartDate] = useState('');
     const [endDate, setEndDate] = useState('');
     const [location, setLocation] = useState('');
@@ -17,7 +17,7 @@ function TripForm() {
         dispatch({
             type: 'ADD_TRIP',
             payload: {
-            tripTitle: tripTitle,
+            title: title,
             startDate: startDate,
             endDate: endDate,
             location: location,
@@ -32,14 +32,14 @@ function TripForm() {
     <form className="formPanel" onSubmit={addTrip}>
         <h2>:::New Trip:::</h2>
         <div>
-        <label htmlFor="triptitle">
+        <label htmlFor="title">
             Trip Title:
             <input
             type="text"
-            name="triptitle"
-            value={tripTitle}
+            name="title"
+            value={title}
             required
-            onChange={(event) => setTripTitle(event.target.value)}
+            onChange={(event) => setTitle(event.target.value)}
             />
         </label>
         </div>
