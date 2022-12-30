@@ -1,38 +1,36 @@
 import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router';
 
 function TripForm() {
+    const history = useHistory();
     const [tripTitle, setTripTitle] = useState('');
     const [startDate, setStartDate] = useState('');
     const [endDate, setEndDate] = useState('');
     const [location, setLocation] = useState('');
     const [packingList, setPackingList] = useState('');
-    const errors = useSelector((store) => store.errors);
     const dispatch = useDispatch();
 
     const addTrip = (event) => {
-    event.preventDefault();
+        event.preventDefault();
 
-    dispatch({
-        type: 'ADD_TRIP',
-        payload: {
-        tripTitle: tripTitle,
-        startDate: startDate,
-        endDate: endDate,
-        location: location,
-        packingList: packingList
-        },
-    });
+        dispatch({
+            type: 'ADD_TRIP',
+            payload: {
+            tripTitle: tripTitle,
+            startDate: startDate,
+            endDate: endDate,
+            location: location,
+            packingList: packingList
+            },
+        });
+
+        history.push('/trips');
     }; // end addTrip
 
     return (
     <form className="formPanel" onSubmit={addTrip}>
         <h2>:::New Trip:::</h2>
-        {errors.registrationMessage && (
-        <h3 className="alert" role="alert">
-            {errors.registrationMessage}
-        </h3>
-        )}
         <div>
         <label htmlFor="triptitle">
             Trip Title:
@@ -94,7 +92,7 @@ function TripForm() {
         </label>
         </div>
         <div>
-            <input className="btn" type="submit" name="save" />
+            <input className="add-trip-btn" type="submit" name="save" />
         </div>
     </form>
     );
