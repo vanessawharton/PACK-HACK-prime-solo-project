@@ -13,7 +13,7 @@ router.get('/', (req, res) => {
         res.send(result.rows);
         })
         .catch(err => {
-        console.log('ERROR: Get all trips', err);
+        console.log('ERROR: Get all packing lists', err);
         res.sendStatus(500)
         })
 });

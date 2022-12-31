@@ -21,6 +21,8 @@ import TripsPage from '../TripsPage/TripsPage';
 import TripForm from '../TripForm/TripForm';
 import TripDetails from '../TripDetails/TripDetails';
 import EditTrip from '../EditTrip/EditTrip';
+import PackingListsPage from '../PackingListsPage/PackingListsPage';
+import PackingListView from '../PackingListView/PackingListView';
 
 import './App.css';
 
