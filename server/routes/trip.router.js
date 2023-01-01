@@ -64,7 +64,7 @@ router.put('/:id', (req, res) => {
 })
 
 //DELETE request for trip
-router.delete('/remove/:id', (req, res) => {
+router.delete('/:id', (req, res) => {
 
     console.log('in router delete');
     pool.query(`DELETE FROM "trips" WHERE "id" = $1 AND "user_id" = $2`, [req.params.id, req.user.id])

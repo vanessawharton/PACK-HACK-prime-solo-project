@@ -19,6 +19,10 @@ function TripDetails() {
         dispatch({ type: 'FETCH_SELECT_TRIP', payload: id});
     }, [])
 
+    const handleClick = () => {
+        dispatch({ type: 'DELETE_TRIP', payload: id});
+        history.push('/trips');
+    };
 
     return (
         <div className="detail">
@@ -28,7 +32,8 @@ function TripDetails() {
             <p>{trip?.start_date}</p>
             <p>{trip?.end_date}</p>
             <p>{trip?.packingList}</p>
-            <button className='editPageBtn' onClick={() => history.push(`/edit/${id}`)}>Edit</button>
+            <button className='editTripBtn' onClick={() => history.push(`/edit/${id}`)}>Edit</button>
+            <button className='deleteTripBtn' onClick={handleClick}>Delete</button>
             <button className="homeBtn" onClick={() => history.push('/trips')}>Return to My Trips</button> 
         </div>
     );

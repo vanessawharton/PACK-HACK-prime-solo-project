@@ -45,10 +45,10 @@ function* addTrip(action) {
 }
 
 function* deleteTrip(action) {
-	console.log(action.payload);
+	console.log('in deleteTrip, action.payload is:', action.payload);
 	try {
 		console.log('in deleteTrip');
-		yield axios.delete('/api/trips/' + action.payload.id);
+		yield axios.delete('/api/trips/' + action.payload);
 		
 		yield put({type: 'FETCH_TRIPS'});
 	} catch(err){
