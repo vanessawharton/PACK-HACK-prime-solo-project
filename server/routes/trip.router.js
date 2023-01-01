@@ -20,35 +20,30 @@ router.get('/', (req, res) => {
 
 // GET request for selected trip
 router.get('/:id', (req, res) => {
-    const tripId = req.params.id
+    const tripId = req.params.id;
     console.log('GET request for selected trip with ID: ', tripId);
 
-    const query = `SELECT * FROM "trips"`;
+    const query = `SELECT * FROM "trips" WHERE "id" = $1`;
     pool.query(query, [tripId])
         .then( result => {
         res.send(result.rows);
         })
         .catch(err => {
         console.log('ERROR: Get selected trip', err);
-        res.sendStatus(500)
-        })
+        res.sendStatus(500);
+        });
     });
 
 
 // POST-- add a new trip to the DB
 router.post('/', (req, res) => {
     console.log('in Post, req.body is: ', req.body, 'req.user is:', req.user);
-    const insertTripQuery = `
-        INSERT INTO "trips" ("title", "start_date", "end_date", "location", "user_id")
-        VALUES ($1, $2, $3, $4, $5)
-        RETURNING "id";
-    `;
-
+    const insertTripQuery = `INSERT INTO "trips" ("title", "start_date", "end_date", "location", "user_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id";`;
     pool.query(insertTripQuery, [req.body.title, req.body.startDate, req.body.endDate, req.body.location, req.user.id])
     .then(() => {
         res.sendStatus(201);
     }).catch(err => {
-        console.log(err);
+        console.log('ERROR POSTING', err);
         res.sendStatus(500);
     });
 });

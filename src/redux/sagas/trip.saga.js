@@ -1,11 +1,13 @@
 import axios from 'axios';
 import { put, takeLatest } from 'redux-saga/effects';
+import TripsPage from '../../components/TripsPage/TripsPage';
 
 // worker Saga: will be fired on "FETCH_TRIPS" actions
 function* fetchTrips(action) {
     try {
 
     const response = yield axios.get('/api/trips');
+    console.log('fetch all:', response.data);
     yield put({ type: 'SET_TRIPS', payload: response.data });
     } catch (error) {
     console.log('User get request failed', error);
@@ -31,9 +33,12 @@ function* fetchSelectedTrip(action) {
 function* addTrip(action) {
     console.log('in addTrip, action.payload:', action.payload);
     try {
+        console.log('SO FAR');
         yield axios.post('/api/trips', action.payload);
+        console.log('SO GOOD');
     // update state for DB data with new trip
-        yield put ({ type: 'FETCH_TRIPS'});
+        yield put({ type: 'FETCH_TRIPS' });
+        console.log('Fingers crossed');
     }catch(err) {
         console.log('Post new trip error', err);
     }

@@ -11,8 +11,8 @@ CREATE TABLE "user" (
 CREATE TABLE "trips" (
     "id" SERIAL PRIMARY KEY,
     "title" VARCHAR (255) UNIQUE NOT NULL,
-    "start_date" DATE NOT NULL,
-    "end_date" DATE NOT NULL,
+    "start_date" DATE,
+    "end_date" DATE,
     "location" TEXT(255),
     "packing_list_id" INT REFERENCES "packing_lists",
     "todo_list_id" INT REFERENCES "todo_lists",

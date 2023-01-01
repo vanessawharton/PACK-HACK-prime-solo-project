@@ -43,11 +43,11 @@ function TripForm() {
             </label>
         </div>
         <div>
-            <label htmlFor="startDate">
+            <label htmlFor="start-date">
                 Start Date:
                 <input
                 type="text"
-                name="startDate"
+                name="start_date"
                 value={startDate}
                 required
                 onChange={(event) => setStartDate(event.target.value)}
@@ -55,11 +55,11 @@ function TripForm() {
             </label>
         </div>
         <div>
-            <label htmlFor="endDate">
+            <label htmlFor="end-date">
                 End Date:
                 <input
                 type="text"
-                name="endDate"
+                name="end_date"
                 value={endDate}
                 required
                 onChange={(event) => setEndDate(event.target.value)}
@@ -78,18 +78,24 @@ function TripForm() {
                 />
             </label>
         </div>
-        {/* <div>
-            <label htmlFor="packinglistoption">
-                Packing List:
-                <input
-                type="dropdown"
-                name="packinglist"
-                value={packingList}
-                required
-                onChange={(event) => setPackingList(event.target.value)}
-                />
+        <div>
+            <label htmlFor="packing-list-option">Packing List:
+                <select>
+                    <option value="" selected disabled>Choose from Dropdown</option>
+                    <option value="" disabled>Use a Previous List</option>
+                    <option value="">* Berlin</option>
+                    <option value="">* Paris</option>
+                    <option value="">* Bali</option>
+                    <option value="" disabled>---OR---</option>
+                    <option value="" disabled>Use a Template</option>
+                    <option value="">* Weekend Getaway</option>
+                    <option value="">* Summer Road Trip</option>
+                    <option value="">* Standard Template</option>
+                    <option value="" disabled>---OR---</option>
+                    <option value="">Start From Scratch!</option>
+                </select>
             </label>
-        </div> */}
+        </div>
         <div>
             <input className="add-trip-btn" type="submit" name="Save" />
         </div>
