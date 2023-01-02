@@ -11,14 +11,20 @@ function PackingListView( {packingList} ) {
     const history = useHistory();
 
     const handleClick = () => {
-        history.push(`/packingLists/${packingList.id}`);
+        history.push(`/packinglists/${packingList.id}`);
     }
+
+    const handleDelete = () => {
+        dispatch({ type: 'DELETE_PACKING_LIST', payload: id});
+        history.push('/packinglists');
+    };
 
     return (
         <div className="card">
             <Card key={packingList?.id} onClick={handleClick}>
                 <CardContent>
                     {packingList?.title}
+                    <button className='deleteListBtn' onClick={handleDelete}>Delete</button>
                 </CardContent>
             </Card>
         </div>

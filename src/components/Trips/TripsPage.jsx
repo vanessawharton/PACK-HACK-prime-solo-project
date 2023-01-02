@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router';
-import TripView from '../TripView/TripView';
+import TripView from './TripView';
 
 function TripsPage() {
     const trips = useSelector((store) => store.trips);
