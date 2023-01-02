@@ -15,14 +15,15 @@ import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 
 import AboutPage from '../AboutPage/AboutPage';
 import LandingPage from '../LandingPage/LandingPage';
-import LoginPage from '../LoginPage/LoginPage';
+import LoginPage from '../Login/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
-import TripsPage from '../TripsPage/TripsPage';
-import TripForm from '../TripForm/TripForm';
-import TripDetails from '../TripDetails/TripDetails';
-import EditTrip from '../EditTrip/EditTrip';
-import PackingListsPage from '../PackingListsPage/PackingListsPage';
-import PackingListView from '../PackingListView/PackingListView';
+import TripsPage from '../Trips/TripsPage';
+import TripForm from '../Trips/TripForm';
+import TripDetails from '../Trips/TripDetails';
+import EditTrip from '../Trips/EditTrip';
+import PackingListsPage from '../PackingLists/PackingListsPage';
+import PackingListForm from '../PackingLists/PackingListForm';
+import PackingListDetails from '../PackingLists/PackingListDetails';
 
 import './App.css';
 
@@ -85,17 +86,17 @@ function App() {
             <PackingListsPage />
           </ProtectedRoute>
 
-          {/* <ProtectedRoute
+          <ProtectedRoute
             exact
-            path="/addpackinglist"
+            path="/addpacklist"
           >
-            <PackingListForm /> */}
-          {/* </ProtectedRoute> */}
-
-          <ProtectedRoute path='/packinglists/:id' children={<PackingListView />}>
+            <PackingListForm /> 
           </ProtectedRoute>
-          {/* 
-          <ProtectedRoute path='/packinglists/edit/:id' children={<EditPackingList />}>
+
+          <ProtectedRoute path='/packinglists/:id' children={<PackingListDetails />}>
+          </ProtectedRoute>
+
+          {/* <ProtectedRoute path='/packinglists/edit/:id' children={<EditPackingList />}>
           </ProtectedRoute> */}
 
 

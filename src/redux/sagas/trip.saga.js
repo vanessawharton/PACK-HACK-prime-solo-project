@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { put, takeLatest } from 'redux-saga/effects';
-import TripsPage from '../../components/TripsPage/TripsPage';
+
 
 // worker Saga: will be fired on "FETCH_TRIPS" actions
 function* fetchTrips(action) {
