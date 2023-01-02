@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router';
+import Select from 'react-select';
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 function TripForm() {
     const history = useHistory();
@@ -10,13 +13,14 @@ function TripForm() {
     const [startDate, setStartDate] = useState('');
     const [endDate, setEndDate] = useState('');
     const [location, setLocation] = useState('');
-    // const [packingList, setPackingList] = useState('');
+    const [packingList, setPackingList] = useState('');
 
     const tripDetails = {
         title: title,
         start_date: startDate,
         end_date: endDate,
         location: location,
+        packingList: packingList
     };
 
     const addTrip = (event) => {
@@ -26,6 +30,35 @@ function TripForm() {
 
         history.push('/trips');
     }; // end addTrip
+
+    const priorOptions = [
+        { value: "Paris", label: "Paris" },
+        { value: "Berlin", label: "Berlin" },
+        { value: "Bali", label: "Bali" }
+    ];
+        
+    const templateOptions = [
+        { value: "weekend-getaway", label: "Weekend Getaway" },
+        { value: "summer-road-trip", label: "Summer Road Trip" },
+        { value: "standard-template", label: "Standard Template" }
+    ];
+        
+    const groupedOptions = [
+        {
+            label: "Use a Previous List",
+            options: priorOptions
+        },
+        {
+            label: "Use a Template",
+            options: templateOptions
+        }
+    ];
+
+    function handleChange(option) {
+        console.log('in TripForm, option.value is:', option.value);
+        setPackingList(option.value);
+    };
+
 
     return (
     <form className="formPanel" onSubmit={addTrip}>
@@ -45,25 +78,22 @@ function TripForm() {
         <div>
             <label htmlFor="start-date">
                 Start Date:
-                <input
-                type="text"
-                name="start_date"
-                value={startDate}
-                required
-                onChange={(event) => setStartDate(event.target.value)}
+                <DatePicker 
+                    selected={startDate} 
+                    required
+                    onChange={(date) => setStartDate(date)} 
                 />
             </label>
         </div>
         <div>
             <label htmlFor="end-date">
                 End Date:
-                <input
-                type="text"
-                name="end_date"
-                value={endDate}
-                required
-                onChange={(event) => setEndDate(event.target.value)}
+                <DatePicker 
+                    selected={endDate} 
+                    required
+                    onChange={(date) => setEndDate(date)} 
                 />
+
             </label>
         </div>
         <div>
@@ -80,24 +110,17 @@ function TripForm() {
         </div>
         <div>
             <label htmlFor="packing-list-option">Packing List:
-                <select>
-                    <option value="" selected disabled>Choose from Dropdown</option>
-                    <option value="" disabled>Use a Previous List</option>
-                    <option value="">* Berlin</option>
-                    <option value="">* Paris</option>
-                    <option value="">* Bali</option>
-                    <option value="" disabled>---OR---</option>
-                    <option value="" disabled>Use a Template</option>
-                    <option value="">* Weekend Getaway</option>
-                    <option value="">* Summer Road Trip</option>
-                    <option value="">* Standard Template</option>
-                    <option value="" disabled>---OR---</option>
-                    <option value="">Start From Scratch!</option>
-                </select>
+                <Select
+                    options={groupedOptions}
+                    value={packingList} 
+                    placeholder="Choose from Dropdown"
+                    required
+                    onChange={handleChange}
+                />
             </label>
         </div>
         <div>
-            <input className="add-trip-btn" type="submit" name="Save" />
+            <input className="add-trip-btn" type="submit" />
         </div>
     </form>
     );

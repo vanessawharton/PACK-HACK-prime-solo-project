@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 
 function EditTrip () {
@@ -63,6 +65,10 @@ function EditTrip () {
                 >
                 </input>
 
+                {/* <DatePicker 
+                    value={tripDetails.startDate} 
+                    onChange={(event) => handleChangeFor(event, 'startDate')} 
+                /> */}
                 <input
                     type="text"
                     placeholder="Start Date"
