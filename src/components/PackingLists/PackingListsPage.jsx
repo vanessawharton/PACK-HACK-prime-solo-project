@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router';
-import PackingListView from '../PackingListView/PackingListView';
+import PackingListsView from './PackingListsView';
 
 function PackingListsPage() {
     const packingLists = useSelector((store) => store.packingLists);
@@ -10,7 +10,7 @@ function PackingListsPage() {
 
     //GET all packing lists on page load
     useEffect(() => {
-        dispatch({ type: 'FETCH_PACK_LISTS'});
+        dispatch({ type: 'FETCH_PACKING_LISTS'});
     }, []);
 
     return (
@@ -22,7 +22,7 @@ function PackingListsPage() {
                 >+</button>
             <section className="packing-lists">
                 {packingLists.map(packingList => (
-                        <PackingListView key={packingList.id} packingList={packingList} />
+                        <PackingListsView key={packingList.id} packingList={packingList} />
                     ))}
             </section>
         </div>
