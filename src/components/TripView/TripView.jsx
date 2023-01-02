@@ -1,5 +1,7 @@
 // hooks
 import { useHistory } from "react-router";
+import DateCountdown from 'react-date-countdown-timer';
+
 
 // styling
 import Card from '@mui/material/Card';
@@ -18,9 +20,8 @@ function TripView( {trip} ) {
         <div className="card">
             <Card key={trip?.id} onClick={handleClick}>
                 <CardContent>
-                    {trip?.title}
-                    <br />
-                    // ADD COUNTDOWN
+                    {trip?.title} 
+                    {/* <DateCountdown dateTo= {trip?.startDate} /> */}
                 </CardContent>
             </Card>
         </div>
