@@ -3,6 +3,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router';
 import TripView from './TripView';
 
+import Fab from '@mui/material/Fab';
+import AddIcon from '@mui/icons-material/Add';
+
 function TripsPage() {
     const trips = useSelector((store) => store.trips);
     const history = useHistory();
@@ -16,10 +19,11 @@ function TripsPage() {
     return (
         <div className="trip-container">
             <h2>My Trips</h2>
-            <button 
-                type="button" 
+            <Fab size="medium" color="secondary" aria-label="add">
+                <AddIcon 
                 onClick={() => {history.push('/addtrip');}}
-                >+</button>
+                />
+            </Fab>
             <section className="trips">
                 {trips.map(trip => (
                         <TripView key={trip.id} trip={trip} />

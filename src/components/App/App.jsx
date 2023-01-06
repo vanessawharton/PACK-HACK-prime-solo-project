@@ -25,9 +25,39 @@ import PackingListsPage from '../PackingLists/PackingListsPage';
 import PackingListForm from '../PackingLists/PackingListForm';
 import PackingListDetails from '../PackingLists/PackingListDetails';
 
+import { ThemeProvider, createTheme } from '@mui/material/styles';
 import './App.css';
+import '@fontsource/audiowide';
 
 function App() {
+  const theme= createTheme({
+    palette: {
+      primary: {
+        main: '#BBABDC',
+        dark: '#4415AA',
+      },
+      secondary: {
+        main: '#E16DF5',
+      },
+      accent: {
+        blue: '#5DB7DC',
+        background: '#F5F5F5',
+      },
+      error: {
+        main: '#EC6F6F',
+      },
+      warning: {
+        main: '#ecad6f',
+      },
+      success: {
+        main: '#6fec6f',
+        light: '#E9FFDF'
+      },
+    contrastThreshold: 4.5,
+    }
+  })
+
+
   const dispatch = useDispatch();
 
   const user = useSelector(store => store.user);
@@ -37,6 +67,7 @@ function App() {
   }, [dispatch]);
 
   return (
+    <ThemeProvider theme={theme}>
     <Router>
       <div>
         <Nav />
@@ -150,6 +181,7 @@ function App() {
         <Footer />
       </div>
     </Router>
+    </ThemeProvider>
   );
 }
 

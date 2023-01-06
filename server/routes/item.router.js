@@ -43,7 +43,7 @@ router.put('/:id', (req, res) => {
 });
 
 // DELETE item
-router.delete('/remove/item/:id', (req, res) => {
+router.delete('/:id', (req, res) => {
     let itemId = req.params.id;
     let queryText = `DELETE FROM "packing_list_items" WHERE "id"=$1;`;
 

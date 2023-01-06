@@ -1,3 +1,7 @@
+* {
+  font-family: 'Audiowide' !important;
+}
+
 .nav {
   /* flex box layout */
   display: flex;
@@ -5,7 +9,7 @@
   align-items: center;
 
   margin: 0 0 30px;
-  background-color: #6207d2;
+  background-color:rgba(68, 21, 170, 1) !important;
   overflow: hidden;
 }
 
@@ -24,7 +28,7 @@
 .navLink {
   display: inline-block;
   color: #f2f2f2;
-  background-color: #6207d2;
+  background-color: rgba(68, 21, 170, 1) !important;
   text-align: center;
   padding: 24px 10px;
   text-decoration: none;

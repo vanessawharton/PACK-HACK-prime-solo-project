@@ -5,8 +5,8 @@ body,
 }
 
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color:rgba(199, 93, 237, 0.586);
+  font-family: 'Audiowide';
+  background-color: rgba(187, 171, 220, 1);
   margin: 0px;
 }
 
@@ -33,7 +33,7 @@ Button
   border-color: #2200fc;
   border-width: 1px 1px 3px;
   border-radius: 4px;
-  background-color: #6207d2;
+  background-color: rgba(68, 21, 170, 1);
   color: #f8f8f8;
   font-size: 1.1rem;
   outline: 0;

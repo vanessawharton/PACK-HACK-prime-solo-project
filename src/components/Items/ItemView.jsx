@@ -1,23 +1,47 @@
+import { useDispatch } from 'react-redux';
+
 // styling
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemButton from '@mui/material/ListItemButton';
+import ListItemText from '@mui/material/ListItemText';
+import Checkbox from '@mui/material/Checkbox';
+import IconButton from '@mui/material/IconButton';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 
 function ItemView( {item} ) {
+    const dispatch= useDispatch();
+
+    const handleToggle = () => {
+        dispatch({ type: 'PACK_ITEM', payload: item.id})
+    };
 
     const handleDelete = () => {
-        dispatch({ type: 'DELETE_ITEM', payload: id});
+        dispatch({ type: 'DELETE_ITEM', payload: item.id});
     };
 
     return (
-        <div className="card">
-            <Card key={item?.id}>
-                <CardContent>
-                    {item.name}
-                    <button className='deleteItemBtn' onClick={handleDelete}>Delete</button>
-                </CardContent>
-            </Card>
-        </div>
+        <List>
+            <ListItem 
+                key={item.id}
+                secondaryAction={
+                    <Checkbox
+                        edge="end"
+                        onChange={handleToggle}
+                    />
+                }
+            >
+                <ListItemButton>
+                    <ListItemText id={item.id} primary={item.name} />
+                </ListItemButton>
+                <IconButton aria-label="delete"
+                    onClick={handleDelete}
+                >
+                    <DeleteIcon />
+                </IconButton>
+            </ListItem>
+        </List>
     )
 }
 

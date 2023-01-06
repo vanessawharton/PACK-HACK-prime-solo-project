@@ -19,13 +19,14 @@ router.get('/', (req, res) => {
 });
 
 // GET request for selected packing list
-router.get('/packinglists/:id', (req, res) => {
+router.get('/:id', (req, res) => {
     const packingListId = req.params.id;
     console.log('GET request for selected packing list with ID: ', packingListId);
 
     const query = `SELECT * FROM "packing_lists"
         JOIN "packing_list_items" 
-        ON "packing_list_items"."packing_list_id" = "packing_lists"."id";`;
+        ON "packing_list_items"."packing_list_id" = "packing_lists"."id"
+        WHERE "packing_lists"."id" = $1;`;
     pool.query(query, [packingListId])
         .then( result => {
         res.send(result.rows);
