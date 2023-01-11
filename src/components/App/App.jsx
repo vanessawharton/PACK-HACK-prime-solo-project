@@ -67,9 +67,9 @@ function App() {
   }, [dispatch]);
 
   return (
-    <ThemeProvider theme={theme}>
     <Router>
       <div>
+      <ThemeProvider theme={theme}>
         <Nav />
         <Switch>
           {/* Visiting localhost:3000 will redirect to localhost:3000/home */}
@@ -179,9 +179,9 @@ function App() {
           </Route>
         </Switch>
         <Footer />
+        </ThemeProvider>
       </div>
     </Router>
-    </ThemeProvider>
   );
 }
 

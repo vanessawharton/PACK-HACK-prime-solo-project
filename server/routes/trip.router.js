@@ -6,7 +6,7 @@ const pool = require('../modules/pool');
 const router = express.Router();
 
 // GET request for all trips
-router.get('/', (req, res) => {
+router.get('/', rejectUnauthenticated, (req, res) => {
     const query = `SELECT * FROM "trips"`;
     pool.query(query)
         .then( result => {
@@ -36,6 +36,8 @@ router.get('/:id', (req, res) => {
 
 
 // POST-- add a new trip to the DB
+
+// test removing "Returning"
 router.post('/', (req, res) => {
     console.log('in Post, req.body is: ', req.body, 'req.user is:', req.user);
     const insertTripQuery = `INSERT INTO "trips" ("title", "start_date", "end_date", "location", "user_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id";`;

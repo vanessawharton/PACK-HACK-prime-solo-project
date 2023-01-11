@@ -2,14 +2,17 @@
   font-family: 'Audiowide' !important;
 }
 
+#menu-appbar {
+  background-color: rgba(68, 21, 170, 1) !important;
+}
+
 .nav {
   /* flex box layout */
   display: flex;
   justify-content: space-between;
   align-items: center;
-
+  background-color: rgba(68, 21, 170, 1) !important;
   margin: 0 0 30px;
-  background-color:rgba(68, 21, 170, 1) !important;
   overflow: hidden;
 }
 
@@ -28,7 +31,6 @@
 .navLink {
   display: inline-block;
   color: #f2f2f2;
-  background-color: rgba(68, 21, 170, 1) !important;
   text-align: center;
   padding: 24px 10px;
   text-decoration: none;
