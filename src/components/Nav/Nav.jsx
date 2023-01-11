@@ -57,23 +57,22 @@ export default function Nav() {
 
             {/* If no user is logged in, show these links */}
             {!user.id && (
-              // If there's no user, show login/registration links
-              <>
+              <div>
               <MenuItem onClick={() => {history.push('/login'); setAnchorEl(null);}}>Login / Register</MenuItem>
               <MenuItem onClick={() => {history.push('/about'); setAnchorEl(null);}}>About</MenuItem>
-              </>
+              </div>
             )}
 
             {/* If a user is logged in, show these links */}
             {user.id && (
-              <>
+              <div>
                 <MenuItem onClick={() => {history.push('/trips'); setAnchorEl(null);}}>My Trips</MenuItem>
                 <MenuItem onClick={() => {history.push('/packinglists'); setAnchorEl(null);}}>My Packing Lists</MenuItem>
                 <MenuItem onClick={() => {history.push('/about'); setAnchorEl(null);}}>About</MenuItem>
                 <MenuItem>
                   <LogOutButton className="navLink" />
                 </MenuItem>
-              </>
+              </div>
             )}
 
             </Menu>
