@@ -2,37 +2,12 @@
   font-family: 'Audiowide' !important;
 }
 
-#menu-appbar {
-  background-color: rgba(68, 21, 170, 1) !important;
-}
-
-.nav {
-  /* flex box layout */
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: rgba(68, 21, 170, 1) !important;
-  margin: 0 0 30px;
-  overflow: hidden;
-}
-
-.nav a {
-  text-decoration: none;
-}
-
-.nav-title {
-  font-size: 24px;
-  font-weight: 700;
-  color: #f2f2f2;
-  padding-left: 10px;
-  margin: 0;
-}
-
 .navLink {
   display: inline-block;
+  background-color: rgba(68, 21, 170, 1);
   color: #f2f2f2;
   text-align: center;
-  padding: 24px 10px;
+  padding: 12px 10px;
   text-decoration: none;
   font-size: 15px;
 
@@ -46,3 +21,14 @@
 .navLink:hover {
   background-color:#945dd8;
 }
+
+.nav {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
+
+/* .IconButton {
+  display: flex !important;
+  align-items: flex-start;
+} */

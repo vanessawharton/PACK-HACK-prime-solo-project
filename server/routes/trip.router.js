@@ -19,7 +19,7 @@ router.get('/', rejectUnauthenticated, (req, res) => {
 });
 
 // GET request for selected trip
-router.get('/:id', (req, res) => {
+router.get('/:id', rejectUnauthenticated, (req, res) => {
     const tripId = req.params.id;
     console.log('GET request for selected trip with ID: ', tripId);
 
@@ -36,11 +36,9 @@ router.get('/:id', (req, res) => {
 
 
 // POST-- add a new trip to the DB
-
-// test removing "Returning"
-router.post('/', (req, res) => {
+router.post('/', rejectUnauthenticated, (req, res) => {
     console.log('in Post, req.body is: ', req.body, 'req.user is:', req.user);
-    const insertTripQuery = `INSERT INTO "trips" ("title", "start_date", "end_date", "location", "user_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id";`;
+    const insertTripQuery = `INSERT INTO "trips" ("title", "start_date", "end_date", "location", "user_id") VALUES ($1, $2, $3, $4, $5`;
     pool.query(insertTripQuery, [req.body.title, req.body.startDate, req.body.endDate, req.body.location, req.user.id])
     .then(() => {
         res.sendStatus(201);
@@ -51,9 +49,9 @@ router.post('/', (req, res) => {
 });
 
 // PUT request to edit trip details
-router.put('/:id', (req, res) => {
+router.put('/:id', rejectUnauthenticated, (req, res) => {
     console.log('in PUT request', req.params.id, req.body);
-    const query = `UPDATE "trips" SET "title" = $1, "start_date" = $2, "end_date" = $3, "location" = $5 WHERE "id" = $6;`;
+    const query = `UPDATE "trips" SET "title" = $1, "start_date" = $2, "end_date" = $3, "location" = $4 WHERE "id" = $5;`;
     // set up values
     const values = [req.body.title, req.body.startDate, req.body.endDate, req.body.location, req.params.id];
     // send query to DB
@@ -66,7 +64,7 @@ router.put('/:id', (req, res) => {
 })
 
 //DELETE request for trip
-router.delete('/:id', (req, res) => {
+router.delete('/:id', rejectUnauthenticated, (req, res) => {
 
     console.log('in router delete');
     pool.query(`DELETE FROM "trips" WHERE "id" = $1 AND "user_id" = $2`, [req.params.id, req.user.id])

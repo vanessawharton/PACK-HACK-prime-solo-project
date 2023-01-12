@@ -18,14 +18,19 @@ function TripView( {trip} ) {
 
     return (
         <div className="card">
-            <Card key={trip?.id} onClick={handleClick}>
-                <CardContent>
+            <Card 
+                key={trip?.id}
+                sx={{ width: 800 }} 
+                onClick={handleClick}
+            >
+                <CardContent sx={{ fontSize: 36 }}>
                     {trip?.title} 
                     {/* <DateCountdown dateTo= {trip?.startDate} /> */}
                 </CardContent>
             </Card>
+            <br />
         </div>
-    )
+    );
 }
 
 export default TripView;

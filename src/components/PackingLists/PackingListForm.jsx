@@ -20,9 +20,9 @@ function PackingListForm() {
 
 
     return (
-    <form className="formPanel" onSubmit={addPackingList}>
+    <form className="formPanel">
+        <center>
         <h2>:::New Packing List:::</h2>
-        <div>
             <label htmlFor="title">
                 Title:
                 <input
@@ -33,10 +33,8 @@ function PackingListForm() {
                 onChange={(event) => setTitle(event.target.value)}
                 />
             </label>
-        </div>
-        <div>
-            <input className="add-packing-list-btn" type="submit" />
-        </div>
+            <button className="submit-btn" onClick={addPackingList}>Submit</button>
+        </center>
     </form>
     );
 }

@@ -55,47 +55,42 @@ function EditTrip () {
 
     return (
         <div>
-            <h3>Edit Trip: {trip?.title}</h3>
+            <center>
+            <h1>Edit Trip: {trip?.title}</h1>
             <form className="add-edit-form" onSubmit={handleSubmit}>
+                Title:
                 <input
                     type="text"
-                    placeholder="title"
                     value={tripDetails.title}
                     onChange={(event) => handleChangeFor(event, 'title')}
                 >
                 </input>
-
-                {/* <DatePicker 
+                <br />
+                Start Date:
+                <DatePicker 
                     value={tripDetails.startDate} 
                     onChange={(event) => handleChangeFor(event, 'startDate')} 
-                /> */}
-                <input
-                    type="text"
-                    placeholder="Start Date"
-                    value={tripDetails.startDate}
-                    onChange={(event) => handleChangeFor(event, 'startDate')}
-                >
-                </input>
+                />
 
-                <input
-                    type="text"
-                    placeholder="End Date"
-                    value={tripDetails.endDate}
-                    onChange={(event) => handleChangeFor(event, 'endDate')}
-                >
-                </input>
+                End Date:
+                <DatePicker 
+                    value={tripDetails.endDate} 
+                    onChange={(event) => handleChangeFor(event, 'endDate')} 
+                />
 
+                Location:
                 <input
                     type="text"
-                    placeholder="Location"
                     value={tripDetails.location}
                     onChange={(event) => handleChangeFor(event, 'location')}
                 >
                 </input>
+                <br />
 
                 <button type="submit" onClick={handleSubmit}>Update Trip</button>
-            </form>
             <button type="submit" onClick={() => { history.push(`/trips/${id}`)}}>Cancel</button>
+            </form>
+            </center>
         </div>
     )
 }

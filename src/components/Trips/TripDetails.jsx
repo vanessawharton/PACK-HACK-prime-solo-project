@@ -26,15 +26,22 @@ function TripDetails() {
 
     return (
         <div className="detail">
-            <h3>{trip?.title}</h3>
-            <br />
-            <p>{trip?.location}</p>
-            <p>{trip?.start_date}</p>
-            <p>{trip?.end_date}</p>
-            <p>{trip?.packingList}</p>
+            <center>
+            <h3>Title: {trip?.title}</h3>
+            <p>Location: {trip?.location}</p>
+            <p>Start Date: {trip?.start_date}</p>
+            <p>End Date: {trip?.end_date}</p>
+            <button
+                type="button"
+                className="btn btn_asLink"
+                onClick={() => history.push(`/packinglists/${id}`)}>Packing List
+                </button>
+                <br />
+                <br />
             <button className='editTripBtn' onClick={() => history.push(`/edit/${id}`)}>Edit</button>
             <button className='deleteTripBtn' onClick={handleClick}>Delete</button>
             <button className="homeBtn" onClick={() => history.push('/trips')}>Return to My Trips</button> 
+            </center>
         </div>
     );
 }

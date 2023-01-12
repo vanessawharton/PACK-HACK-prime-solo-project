@@ -18,17 +18,20 @@ function TripsPage() {
 
     return (
         <div className="trip-container">
-            <h2>My Trips</h2>
+            <center>
+            <h1>MY TRIPS</h1>
             <Fab size="medium" color="secondary" aria-label="add">
                 <AddIcon 
                 onClick={() => {history.push('/addtrip');}}
                 />
             </Fab>
+            <br />
             <section className="trips">
                 {trips.map(trip => (
                         <TripView key={trip.id} trip={trip} />
                     ))}
             </section>
+        </center>
         </div>
     );
 }

@@ -13,14 +13,14 @@ function TripForm() {
     const [startDate, setStartDate] = useState('');
     const [endDate, setEndDate] = useState('');
     const [location, setLocation] = useState('');
-    const [packingList, setPackingList] = useState('');
+    const [packingListOption, setPackingListOption] = useState('');
 
     const tripDetails = {
         title: title,
         start_date: startDate,
         end_date: endDate,
         location: location,
-        packingList: packingList
+        packingList: packingListOption
     };
 
     const addTrip = (event) => {
@@ -56,12 +56,13 @@ function TripForm() {
 
     function handleChange(option) {
         console.log('in TripForm, option.value is:', option.value);
-        setPackingList(option.value);
+        setPackingListOption(option.value);
     };
 
 
     return (
     <form className="formPanel" onSubmit={addTrip}>
+        <center>
         <h2>:::New Trip:::</h2>
         <div>
             <label htmlFor="title">
@@ -112,7 +113,7 @@ function TripForm() {
             <label htmlFor="packing-list-option">Packing List:
                 <Select
                     options={groupedOptions}
-                    value={packingList} 
+                    value={packingListOption} 
                     placeholder="Choose from Dropdown"
                     required
                     onChange={handleChange}
@@ -122,6 +123,7 @@ function TripForm() {
         <div>
             <input className="add-trip-btn" type="submit" />
         </div>
+        </center>
     </form>
     );
 }
