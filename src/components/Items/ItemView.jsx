@@ -5,9 +5,11 @@ import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
+import Box from '@mui/material/Box';
 import Checkbox from '@mui/material/Checkbox';
 import IconButton from '@mui/material/IconButton';
 import DeleteIcon from '@mui/icons-material/Delete';
+
 
 
 function ItemView( {item} ) {
@@ -22,9 +24,13 @@ function ItemView( {item} ) {
     };
 
     return (
+        <center>
+            <Box sx={{ width: '70%' }}>
+            
         <List>
             <ListItem 
                 key={item.id}
+                sx= {{ bgcolor: "white" }}
                 secondaryAction={
                     <Checkbox
                         edge="end"
@@ -41,7 +47,11 @@ function ItemView( {item} ) {
                     <DeleteIcon />
                 </IconButton>
             </ListItem>
+            <br />
         </List>
+        </Box>
+        </center>
+        
     )
 }
 

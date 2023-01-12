@@ -6,7 +6,7 @@ const pool = require('../modules/pool');
 const router = express.Router();
 
 // GET request for all packing list items
-router.get('/', (req, res) => {
+router.get('/', rejectUnauthenticated, (req, res) => {
     const query = `SELECT * FROM "packing_list_items" WHERE "packing_list_id" =$1`;
     pool.query(query)
         .then( result => {
@@ -19,7 +19,7 @@ router.get('/', (req, res) => {
 });
 
 // PUT request for changing isPacked status
-router.put('/:id', (req, res) => {
+router.put('/:id', rejectUnauthenticated, (req, res) => {
     let itemId = req.params.id;
 
     let isPacked = req.body.isPacked;
@@ -37,13 +37,13 @@ router.put('/:id', (req, res) => {
     .then (() => {
         res.sendStatus(200);
     }).catch((error) => {
-        alert('error updating packed status', error);
+        console.log('error updating packed status', error);
         res.sendStatus(500);
     });
 });
 
 // DELETE item
-router.delete('/:id', (req, res) => {
+router.delete('/items/remove/:id', rejectUnauthenticated, (req, res) => {
     let itemId = req.params.id;
     let queryText = `DELETE FROM "packing_list_items" WHERE "id"=$1;`;
 

@@ -15,9 +15,9 @@ function* fetchItems(action) {
 }
 
 function* packItem(action) {
+    console.log('in item.saga packItem', action.payload);
     try {
-
-        const response = yield axios.put('/api/items');
+        const response = yield axios.put('/api/items/' + action.payload, action.payload);
         console.log('updating item', response.data);
         yield put({ type: 'FETCH_ITEMS' });
     }catch(err) {
@@ -43,10 +43,8 @@ function* addItem(action) {
 function* deleteItem(action) {
 	console.log('in deleteItem, action.payload is:', action.payload);
 	try {
-		console.log('in deleteItem');
-		yield axios.delete('/api/item/' + action.payload);
-		
-		yield put({type: 'FETCH_ITEMS'});
+		yield axios.delete('/api/items/remove/' + action.payload);
+		yield put({type: 'FETCH_PACKING_LISTS'});
 	} catch(err){
 		console.log('error deleting', err);
 	}
@@ -56,7 +54,7 @@ function* editItem(action) {
     console.log('in item.saga editItem', action.payload);
     try {
         yield axios.put('/api/items/' + action.payload.id, action.payload);
-        yield put({type: 'FETCH_ITEMS'});
+        yield put({type: 'FETCH_PACKING_LISTS'});
     }
     catch (error) {
         console.log('error in item.saga editItem', error);

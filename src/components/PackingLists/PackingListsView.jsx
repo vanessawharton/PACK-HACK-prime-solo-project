@@ -22,16 +22,20 @@ function PackingListView( {packingList} ) {
 
     return (
         <div className="card">
-            <Card key={packingList?.id} onClick={handleClick}>
-                <CardContent>
+            <Card 
+                key={packingList?.id}
+                sx={{ width: 800 }}
+                onClick={handleClick}>
+                <CardContent sx={{ fontSize: 36 }}>
                     {packingList?.title}
                     <IconButton 
                         aria-label="delete"
                         onClick={handleDelete}>
-                        <DeleteIcon />
+                        <DeleteIcon style={{ position: "absolute", left: "300px" }}/>
                     </IconButton>
                 </CardContent>
             </Card>
+            <br />
         </div>
     )
 }

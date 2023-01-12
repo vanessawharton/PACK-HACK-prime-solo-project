@@ -6,7 +6,7 @@ const pool = require('../modules/pool');
 const router = express.Router();
 
 // GET request for all packing lists
-router.get('/', (req, res) => {
+router.get('/', rejectUnauthenticated, (req, res) => {
     const query = `SELECT * FROM "packing_lists"`;
     pool.query(query)
         .then( result => {
@@ -19,7 +19,7 @@ router.get('/', (req, res) => {
 });
 
 // GET request for selected packing list
-router.get('/:id', (req, res) => {
+router.get('/:id', rejectUnauthenticated, (req, res) => {
     const packingListId = req.params.id;
     console.log('GET request for selected packing list with ID: ', packingListId);
 
@@ -39,7 +39,7 @@ router.get('/:id', (req, res) => {
 
 
 // POST-- add a new packing list to the DB
-router.post('/', (req, res) => {
+router.post('/', rejectUnauthenticated, (req, res) => {
     console.log('in Post, req.body is: ', req.body);
     const queryText = `
         INSERT INTO "packing_lists" ("title")
@@ -57,7 +57,7 @@ router.post('/', (req, res) => {
 
 
 // DELETE request for packing list
-router.delete('/packinglists/remove/:id', (req, res) => {
+router.delete('/packinglists/remove/:id', rejectUnauthenticated, (req, res) => {
 
     console.log('in router delete');
     pool.query(`DELETE FROM "packing_lists" WHERE "id" = $1 AND "user_id" = $2`, [req.params.id, req.user.id])

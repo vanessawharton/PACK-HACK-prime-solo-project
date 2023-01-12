@@ -11,11 +11,8 @@ import Divider from '@mui/material/Divider';
 import './AboutPage.css';
 
 const Item = styled(Paper)(({ theme }) => ({
-  backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
-  ...theme.typography.body2,
   padding: theme.spacing(2),
   textAlign: 'center',
-  color: theme.palette.text.secondary,
 }));
 
 
@@ -23,10 +20,10 @@ function AboutPage() {
 
   return (
     <div className="about-container">
-      <Grid container spacing={1} columns={8}>
-        <Grid xs={4} display="flex" justifyContent="center" alignItems="center">
+      <Grid container spacing={0} columns={8}>
+        <Grid xs={5} display="flex" justifyContent="center" alignItems="center">
           <Item className="item">
-            <Typography gutterBottom variant="h5">
+            <Typography variant="h5">
             Technologies Used:
             </Typography>
             <Divider />

@@ -8,9 +8,8 @@ import {
 
 import { useDispatch, useSelector } from 'react-redux';
 
-import Nav from '../Nav/Nav';
 import Footer from '../Footer/Footer';
-
+import Header from '../Header/Header';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 
 import AboutPage from '../AboutPage/AboutPage';
@@ -70,7 +69,7 @@ function App() {
     <Router>
       <div>
       <ThemeProvider theme={theme}>
-        <Nav />
+        <Header />
         <Switch>
           {/* Visiting localhost:3000 will redirect to localhost:3000/home */}
           <Redirect exact from="/" to="/home" />
@@ -126,10 +125,6 @@ function App() {
 
           <ProtectedRoute path='/packinglists/:id' children={<PackingListDetails />}>
           </ProtectedRoute>
-
-          {/* <ProtectedRoute path='/packinglists/edit/:id' children={<EditPackingList />}>
-          </ProtectedRoute> */}
-
 
           <Route
             exact
