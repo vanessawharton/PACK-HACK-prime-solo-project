@@ -3,8 +3,6 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import ItemView from '../Items/ItemView';
-import Fab from '@mui/material/Fab';
-import AddIcon from '@mui/icons-material/Add';
 import ExpandMore from '@mui/icons-material/ExpandMore';
 import ExpandLess from '@mui/icons-material/ExpandLess';
 import Box from '@mui/material/Box';
@@ -12,6 +10,8 @@ import Collapse from '@mui/material/Collapse';
 import Divider from '@mui/material/Divider';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
+import AddBoxIcon from '@mui/icons-material/AddBox';
+import Button from '@mui/material/Button';
 
 
 function PackingListDetails() {
@@ -49,6 +49,10 @@ function PackingListDetails() {
     useEffect(() => {
         dispatch({ type: 'FETCH_SELECT_PACKING_LIST', payload: id});
     }, [])
+
+    const addNewItem = () => {
+        console.log('Adding new item!');
+    };
 
 
     return (
@@ -92,6 +96,20 @@ function PackingListDetails() {
                                     {packingList?.filter(item => item.category === 1).map(item => (
                                         <ItemView key={item.id} item={item} />
                                     ))}
+                                    <Button
+                                        sx={{
+                                            backgroundColor: '#faf3e8',
+                                            width: '20%',
+                                            mt: 1,
+                                            mb: 2,
+                                            ml: 11,
+                                        }}
+                                        variant="outlined"
+                                        size= "large"
+                                        id="cat-1-add-btn"
+                                        startIcon={<AddBoxIcon />}
+                                        onClick={addNewItem}> Add Item
+                                    </Button>
                                 </List>
                             </Collapse>
                             <Divider />
@@ -110,6 +128,20 @@ function PackingListDetails() {
                                 {packingList?.filter(item => item.category === 2).map(item => (
                                         <ItemView key={item.id} item={item} />
                                     ))}
+                                    <Button
+                                        sx={{
+                                            backgroundColor: '#faf3e8',
+                                            width: '20%',
+                                            mt: 1,
+                                            mb: 2,
+                                            ml: 11,
+                                        }}
+                                        variant="outlined"
+                                        size= "large"
+                                        id="cat-2-add-btn"
+                                        startIcon={<AddBoxIcon />}
+                                        onClick={addNewItem}> Add Item
+                                    </Button>
                                 </List>
                             </Collapse>
                             <Divider />
@@ -128,6 +160,20 @@ function PackingListDetails() {
                                 {packingList?.filter(item => item.category === 3).map(item => (
                                         <ItemView key={item.id} item={item} />
                                     ))}
+                                    <Button
+                                        sx={{
+                                            backgroundColor: '#faf3e8',
+                                            width: '20%',
+                                            mt: 1,
+                                            mb: 2,
+                                            ml: 11,
+                                        }}
+                                        variant="outlined"
+                                        size= "large"
+                                        id="cat-3-add-btn"
+                                        startIcon={<AddBoxIcon />}
+                                        onClick={addNewItem}> Add Item
+                                    </Button>
                                 </List>
                             </Collapse>
                             <Divider />
@@ -146,18 +192,23 @@ function PackingListDetails() {
                                 {packingList?.filter(item => item.category === 4).map(item => (
                                         <ItemView key={item.id} item={item} />
                                     ))}
+                                    <Button
+                                        sx={{
+                                            backgroundColor: '#faf3e8',
+                                            width: '20%',
+                                            mt: 1,
+                                            mb: 2,
+                                            ml: 11,
+                                        }}
+                                        variant="outlined"
+                                        size= "large"
+                                        id="cat-4-add-btn"
+                                        startIcon={<AddBoxIcon />}
+                                        onClick={addNewItem}> Add Item
+                                    </Button>
                                 </List>
                             </Collapse>
-                        </List>
-
-
-                <Fab 
-                    sx={{ position: 'fixed', top: 160, left: 470 }}
-                    size="medium" 
-                    color="secondary" 
-                    aria-label="add">
-                    <AddIcon />
-                </Fab>    
+                        </List> 
             </Box>
         </div>
     );
