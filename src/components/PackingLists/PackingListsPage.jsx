@@ -19,7 +19,7 @@ function PackingListsPage() {
     return (
         <div className="packing-lists-container">
             <Fab 
-                sx={{ position: 'absolute', top: 160, right: 600 }}
+                sx={{ position: 'absolute', top: 160, right: 400 }}
                 size="large" 
                 color="secondary" 
                 aria-label="add">

@@ -23,7 +23,7 @@ export default function TripsPage() {
     return (
         <div className="trip-container">
             <Fab 
-                sx={{ position: 'absolute', top: 160, right: 600 }}
+                sx={{ position: 'absolute', top: 160, right: 400 }}
                 size="large" 
                 color="secondary" 
                 aria-label="add">
