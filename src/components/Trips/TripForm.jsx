@@ -32,7 +32,7 @@ function TripForm() {
 
         dispatch({type: 'ADD_TRIP', payload: tripDetails});
 
-        history.push('/trips');
+        history.push('/packinglists/5');
     }; // end addTrip
 
     const priorOptions = [
