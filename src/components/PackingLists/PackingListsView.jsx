@@ -24,14 +24,20 @@ function PackingListView( {packingList} ) {
         <div className="card">
             <Card 
                 key={packingList?.id}
+                title={packingList?.title}
                 sx={{ width: 800 }}
                 onClick={handleClick}>
-                <CardContent sx={{ fontSize: 36 }}>
+                <CardContent 
+                    sx={{ 
+                        fontSize: 36,
+                        backgroundColor: '#4ee1e6' 
+                        }}>
                     {packingList?.title}
                     <IconButton 
                         aria-label="delete"
+                        edge="end"
                         onClick={handleDelete}>
-                        <DeleteIcon style={{ position: "absolute", left: "300px" }}/>
+                        <DeleteIcon />
                     </IconButton>
                 </CardContent>
             </Card>

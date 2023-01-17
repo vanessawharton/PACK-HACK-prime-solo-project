@@ -10,6 +10,7 @@ import Checkbox from '@mui/material/Checkbox';
 import IconButton from '@mui/material/IconButton';
 import DeleteIcon from '@mui/icons-material/Delete';
 import InlineEdit from '../Items/InlineEdit';
+import Divider from '@mui/material/Divider';
 
 
 
@@ -29,33 +30,32 @@ function ItemView( {item} ) {
 
     return (
         <center>
-            <Box sx={{ width: '70%' }}>
-            
-        <List>
-            <ListItem 
-                key={item.id}
-                sx= {{ bgcolor: "white" }}
-                secondaryAction={
+        <Box sx={{ 
+            width: '90%',
+            }}>
+            <List>
+                <Divider />
+                <ListItem 
+                    sx={{ backgroundColor: '#faf3e8' }}
+                    key={item.id}>
                     <Checkbox
-                        edge="end"
+                        edge="start"
                         onChange={handleToggle}
                     />
-                }
-            >
-                <ListItemButton>
-                    <InlineEdit value={item.name} setValue={setValue} />
-                </ListItemButton>
-                <IconButton aria-label="delete"
-                    onClick={handleDelete}
-                >
-                    <DeleteIcon />
-                </IconButton>
-            </ListItem>
-            <br />
-        </List>
+                    <ListItemButton>
+                        <InlineEdit value={item.name} setValue={setValue} />
+                    </ListItemButton>
+                    <IconButton 
+                        aria-label="delete"
+                        onClick={handleDelete}
+                    >
+                        <DeleteIcon />
+                    </IconButton>
+                </ListItem>
+                <Divider />
+            </List>
         </Box>
         </center>
-        
     )
 }
 

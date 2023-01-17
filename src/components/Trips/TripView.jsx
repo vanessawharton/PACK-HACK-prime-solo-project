@@ -1,6 +1,5 @@
 // hooks
 import { useHistory } from "react-router";
-import DateCountdown from 'react-date-countdown-timer';
 
 
 // styling
@@ -20,12 +19,17 @@ function TripView( {trip} ) {
         <div className="card">
             <Card 
                 key={trip?.id}
-                sx={{ width: 800 }} 
+                sx={{ 
+                    width: 800,
+                }} 
                 onClick={handleClick}
             >
-                <CardContent sx={{ fontSize: 36 }}>
-                    {trip?.title} 
-                    {/* <DateCountdown dateTo= {trip?.startDate} /> */}
+                <CardContent 
+                    sx={{ 
+                        fontSize: 36,
+                        backgroundColor: '#edbff5',
+                    }}>
+                    {trip?.title} : {trip?.date_diff} days
                 </CardContent>
             </Card>
             <br />

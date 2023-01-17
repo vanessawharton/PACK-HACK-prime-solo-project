@@ -7,7 +7,8 @@ const router = express.Router();
 
 // GET request for all trips
 router.get('/', rejectUnauthenticated, (req, res) => {
-    const query = `SELECT * FROM "trips"`;
+    const query = `SELECT * FROM "trips"
+        ORDER BY "date_diff" DESC`;
     pool.query(query)
         .then( result => {
         res.send(result.rows);
@@ -38,8 +39,8 @@ router.get('/:id', rejectUnauthenticated, (req, res) => {
 // POST-- add a new trip to the DB
 router.post('/', rejectUnauthenticated, (req, res) => {
     console.log('in Post, req.body is: ', req.body, 'req.user is:', req.user);
-    const insertTripQuery = `INSERT INTO "trips" ("title", "start_date", "end_date", "location", "user_id") VALUES ($1, $2, $3, $4, $5`;
-    pool.query(insertTripQuery, [req.body.title, req.body.startDate, req.body.endDate, req.body.location, req.user.id])
+    const insertTripQuery = `INSERT INTO "trips" ("id", "title", "start_date", "end_date", "location", "user_id") VALUES ($1, $2, $3, $4, $5, $6)`;
+    pool.query(insertTripQuery, [5, req.body.title, req.body.start_date, req.body.end_date, req.body.location, req.user.id])
     .then(() => {
         res.sendStatus(201);
     }).catch(err => {

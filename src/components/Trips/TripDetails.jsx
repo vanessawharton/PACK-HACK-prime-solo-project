@@ -2,6 +2,8 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
+import Box from '@mui/material/Box';
+import { format } from 'date-fns';
 
 function TripDetails() {
 
@@ -24,8 +26,20 @@ function TripDetails() {
         history.push('/trips');
     };
 
+
     return (
         <div className="detail">
+            <Box
+                sx={{
+                    margin: 'auto',
+                    padding: 1,
+                    width: 1000,
+                    elevation: 8,
+                    backgroundColor: '#faf3e8',
+                    boxShadow: 12,
+                    clipPath:
+                    'polygon(0% 0px, 100px 0%, calc(100% - 100px) 0%, 100% 100px, 100% calc(100% - 0px), calc(100% - 100px) 100%, 100px 100%, 0 calc(100% - 100px))'
+                }}>
             <center>
             <h3>Title: {trip?.title}</h3>
             <p>Location: {trip?.location}</p>
@@ -42,6 +56,7 @@ function TripDetails() {
             <button className='deleteTripBtn' onClick={handleClick}>Delete</button>
             <button className="homeBtn" onClick={() => history.push('/trips')}>Return to My Trips</button> 
             </center>
+            </Box>
         </div>
     );
 }

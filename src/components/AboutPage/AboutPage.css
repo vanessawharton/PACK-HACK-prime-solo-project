@@ -1,5 +1,6 @@
 * {
     color: black;
+    font-family: Verdana, Geneva, Tahoma, sans-serif !important;
 }
 
 ul {
@@ -10,6 +11,3 @@ ul {
     text-align: center;
 }
 
-h4 {
-    font-family: Verdana, Geneva, Tahoma, sans-serif !important;
-}

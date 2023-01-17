@@ -33,12 +33,9 @@ function* fetchSelectedTrip(action) {
 function* addTrip(action) {
     console.log('in addTrip, action.payload:', action.payload);
     try {
-        console.log('SO FAR');
         yield axios.post('/api/trips', action.payload);
-        console.log('SO GOOD');
     // update state for DB data with new trip
         yield put({ type: 'FETCH_TRIPS' });
-        console.log('Fingers crossed');
     }catch(err) {
         console.log('Post new trip error', err);
     }

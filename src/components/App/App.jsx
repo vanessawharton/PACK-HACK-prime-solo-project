@@ -5,17 +5,14 @@ import {
   Route,
   Switch,
 } from 'react-router-dom';
-
 import { useDispatch, useSelector } from 'react-redux';
 
 import Footer from '../Footer/Footer';
 import Header from '../Header/Header';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
-
 import AboutPage from '../AboutPage/AboutPage';
 import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../Login/LoginPage';
-import RegisterPage from '../RegisterPage/RegisterPage';
 import TripsPage from '../Trips/TripsPage';
 import TripForm from '../Trips/TripForm';
 import TripDetails from '../Trips/TripDetails';
@@ -23,7 +20,6 @@ import EditTrip from '../Trips/EditTrip';
 import PackingListsPage from '../PackingLists/PackingListsPage';
 import PackingListForm from '../PackingLists/PackingListForm';
 import PackingListDetails from '../PackingLists/PackingListDetails';
-
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import './App.css';
 import '@fontsource/audiowide';
@@ -150,7 +146,7 @@ function App() {
               <Redirect to="/trips" />
               :
               // Otherwise, show the registration page
-              <RegisterPage />
+              <LandingPage />
             }
           </Route>
 

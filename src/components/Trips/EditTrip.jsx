@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import Box from '@mui/material/Box';
 
 
 function EditTrip () {
@@ -55,10 +56,24 @@ function EditTrip () {
 
     return (
         <div>
+            <Box
+                sx={{
+                    margin: 'auto',
+                    padding: 1,
+                    width: 1000,
+                    elevation: 8,
+                    backgroundColor: '#faf3e8',
+                    boxShadow: 12,
+                    clipPath:
+                    'polygon(0% 0px, 100px 0%, calc(100% - 100px) 0%, 100% 100px, 100% calc(100% - 0px), calc(100% - 100px) 100%, 100px 100%, 0 calc(100% - 100px))'
+                }}>
             <center>
             <h1>Edit Trip: {trip?.title}</h1>
+            </center>
             <form className="add-edit-form" onSubmit={handleSubmit}>
+            <center>
                 Title:
+                <br />
                 <input
                     type="text"
                     value={tripDetails.title}
@@ -72,6 +87,7 @@ function EditTrip () {
                     onChange={(event) => handleChangeFor(event, 'startDate')} 
                 />
 
+                <br />
                 End Date:
                 <DatePicker 
                     value={tripDetails.endDate} 
@@ -79,6 +95,7 @@ function EditTrip () {
                 />
 
                 Location:
+                <br />
                 <input
                     type="text"
                     value={tripDetails.location}
@@ -86,11 +103,11 @@ function EditTrip () {
                 >
                 </input>
                 <br />
-
                 <button type="submit" onClick={handleSubmit}>Update Trip</button>
-            <button type="submit" onClick={() => { history.push(`/trips/${id}`)}}>Cancel</button>
-            </form>
-            </center>
+                <button type="submit" onClick={() => { history.push(`/trips/${id}`)}}>Cancel</button>
+                </center>
+                </form>
+            </Box>
         </div>
     )
 }

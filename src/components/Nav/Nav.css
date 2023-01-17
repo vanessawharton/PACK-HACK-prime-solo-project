@@ -23,12 +23,7 @@
 }
 
 .nav {
-  display: flex !important;
-  justify-content: center !important;
-  align-items: center !important;
+  display: flex;
+  justify-content: center;
+  align-content: center;
 }
-
-/* .IconButton {
-  display: flex !important;
-  align-items: flex-start;
-} */

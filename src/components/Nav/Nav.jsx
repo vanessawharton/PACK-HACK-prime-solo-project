@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router';
 
 // material-UI components
+import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
@@ -27,12 +28,14 @@ export default function Nav() {
     <div className="nav">
       <Toolbar>
         <IconButton
+          edge="start"
           size="large"
+          color= "primary"
           aria-label="menu"
           aria-haspopup="true"
           onClick={handleMenu}
         >
-          <MenuIcon />
+          <MenuIcon sx={{color: "red" }}/>
         </IconButton>
         <img id="logo" style={{ height: 100 }} src="/images/Logo.png" />
         <Menu
@@ -53,17 +56,17 @@ export default function Nav() {
         {/* If no user is logged in, show these links */}
         {!user.id && (
           <div>
-            <MenuItem onClick={() => {history.push('/login'); setAnchorEl(null);}}>Login / Register</MenuItem>
-            <MenuItem onClick={() => {history.push('/about'); setAnchorEl(null);}}>About</MenuItem>
+            <MenuItem onClick={() => {history.push('/login'); setAnchorEl(null);}}>LOGIN / REGISTER</MenuItem>
+            <MenuItem onClick={() => {history.push('/about'); setAnchorEl(null);}}>ABOUT</MenuItem>
           </div>
         )}
 
         {/* If a user is logged in, show these links */}
         {user.id && (
           <div>
-            <MenuItem onClick={() => {history.push('/trips'); setAnchorEl(null);}}>My Trips</MenuItem>
-            <MenuItem onClick={() => {history.push('/packinglists'); setAnchorEl(null);}}>My Packing Lists</MenuItem>
-            <MenuItem onClick={() => {history.push('/about'); setAnchorEl(null);}}>About</MenuItem>
+            <MenuItem onClick={() => {history.push('/trips'); setAnchorEl(null);}}>MY TRIPS</MenuItem>
+            <MenuItem onClick={() => {history.push('/packinglists'); setAnchorEl(null);}}>MY PACKING LISTS</MenuItem>
+            <MenuItem onClick={() => {history.push('/about'); setAnchorEl(null);}}>ABOUT</MenuItem>
             <MenuItem>
               <LogOutButton className="navLink" />
             </MenuItem>

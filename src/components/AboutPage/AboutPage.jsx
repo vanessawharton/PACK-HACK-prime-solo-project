@@ -20,14 +20,19 @@ function AboutPage() {
 
   return (
     <div className="about-container">
-      <Grid container spacing={0} columns={8}>
-        <Grid xs={5} display="flex" justifyContent="center" alignItems="center">
+      <Grid sx={{ margin: 'auto' }} container spacing={0} columns={8}>
+        <Grid 
+          xs={5} 
+          display="flex" 
+          justifyContent="center" 
+          alignItems="center"
+        >
           <Item className="item">
-            <Typography variant="h5">
+            <Typography variant="h6">
             Technologies Used:
             </Typography>
             <Divider />
-            <List dense sx={{ }}>
+            <List className="list-item" dense>
               <ListItem>
                 <ListItemText inset>Node</ListItemText>
               </ListItem>

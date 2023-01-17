@@ -4,8 +4,11 @@ body,
   height: 100%;
 }
 
+* {
+  font-family: 'Audiowide' !important;
+}
+
 body {
-  font-family: 'Audiowide';
   background-color: rgba(187, 171, 220, 1);
   margin: 0px;
 }
@@ -38,21 +41,6 @@ Button
   font-size: 1.1rem;
   outline: 0;
   cursor: pointer;
-}
-
-.btn_sizeMin {
-  min-height: 50px;
-  min-width: 100px;
-}
-
-.btn_sizeSm {
-  padding: 10px 15px;
-  font-size: 0.8rem;
-}
-
-.btn_sizeFull {
-  display: block;
-  width: 100%;
 }
 
 .btn:hover {
@@ -98,16 +86,38 @@ Form Treatment
 
 .formPanel {
   box-sizing: border-box;
-  width: 400px;
+  width: 500px;
   max-width: 100%;
   padding: 25px;
   margin: 0 auto 20px;
-  background-color: #efefef;
+  background-color:rgba(230, 222, 246, 0.953);
   border-radius: 3px;
   box-shadow: 0 1px 2px rgb(0, 0, 0, 0.4);
 }
 
 input {
+  text-align: center;
   margin: 5px;
+  background-color: white;
   margin-bottom: 10px;
+  border:rgb(114, 113, 113);
+  border-color: rgb(114, 113, 113);
+  border-style: groove;
+}
+
+label {
+  color:rgba(68, 21, 170, 1);
+}
+
+.submit-btn {
+  display: inline-block;
+  padding: 10px 20px;
+  border-color: #2200fc;
+  border-width: 1px 1px 3px;
+  border-radius: 4px;
+  background-color: rgba(68, 21, 170, 1);
+  color: #f8f8f8;
+  font-size: 1.1rem;
+  outline: 0;
+  cursor: pointer;
 }

@@ -3,7 +3,12 @@ import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router';
 import Select from 'react-select';
 import DatePicker from "react-datepicker";
+import Box from '@mui/material/Box';
 import "react-datepicker/dist/react-datepicker.css";
+import FormControl from '@mui/material/FormControl';
+import InputLabel from '@mui/material/InputLabel';
+import ClickAwayListener from '@mui/base/ClickAwayListener';
+import Popper from '@mui/material/Popper';
 
 function TripForm() {
     const history = useHistory();
@@ -13,14 +18,13 @@ function TripForm() {
     const [startDate, setStartDate] = useState('');
     const [endDate, setEndDate] = useState('');
     const [location, setLocation] = useState('');
-    const [packingListOption, setPackingListOption] = useState('');
+    const [option, setOption] = useState('');
 
     const tripDetails = {
         title: title,
         start_date: startDate,
         end_date: endDate,
-        location: location,
-        packingList: packingListOption
+        location: location
     };
 
     const addTrip = (event) => {
@@ -32,15 +36,16 @@ function TripForm() {
     }; // end addTrip
 
     const priorOptions = [
-        { value: "Paris", label: "Paris" },
-        { value: "Berlin", label: "Berlin" },
-        { value: "Bali", label: "Bali" }
+        { value: 1, label: "Chicago" },
+        { value: 2, label: "Paris" },
+        { value: 3, label: "Hawaii" },
+        { value: 4, label: "Berlin" }
     ];
         
     const templateOptions = [
-        { value: "weekend-getaway", label: "Weekend Getaway" },
-        { value: "summer-road-trip", label: "Summer Road Trip" },
-        { value: "standard-template", label: "Standard Template" }
+        { value: 4, label: "Weekend Getaway" },
+        { value: 5, label: "Summer Road Trip" },
+        { value: 6, label: "Standard Template" }
     ];
         
     const groupedOptions = [
@@ -54,19 +59,32 @@ function TripForm() {
         }
     ];
 
-    function handleChange(option) {
-        console.log('in TripForm, option.value is:', option.value);
-        setPackingListOption(option.value);
+    const handleChange = (event) => {
+        console.log('in TripForm, option.value is:', event.target.value);
+        setOption(event.target.value);
     };
 
 
     return (
-    <form className="formPanel" onSubmit={addTrip}>
+        <Box
+            sx={{
+                margin: 'auto',
+                padding: 1,
+                width: 1000,
+                overflow: 'auto',
+                elevation: 8,
+                backgroundColor: '#faf3e8',
+                boxShadow: 12,
+                clipPath:
+                    'polygon(0% 0px, 100px 0%, calc(100% - 100px) 0%, 100% 100px, 100% calc(100% - 0px), calc(100% - 100px) 100%, 100px 100%, 0 calc(100% - 100px))'
+            }}>
+        <form className="formPanel" onSubmit={addTrip}>
         <center>
-        <h2>:::New Trip:::</h2>
+        <h2>:: NEW TRIP ::</h2>
         <div>
             <label htmlFor="title">
                 Trip Title:
+                <br />
                 <input
                 type="text"
                 name="title"
@@ -79,6 +97,7 @@ function TripForm() {
         <div>
             <label htmlFor="start-date">
                 Start Date:
+                <br />
                 <DatePicker 
                     selected={startDate} 
                     required
@@ -89,6 +108,7 @@ function TripForm() {
         <div>
             <label htmlFor="end-date">
                 End Date:
+                <br />
                 <DatePicker 
                     selected={endDate} 
                     required
@@ -100,6 +120,7 @@ function TripForm() {
         <div>
             <label htmlFor="location">
                 Location:
+                <br />
                 <input
                 type="text"
                 name="location"
@@ -110,21 +131,32 @@ function TripForm() {
             </label>
         </div>
         <div>
-            <label htmlFor="packing-list-option">Packing List:
+            <label htmlFor="packing-list-option">
+                Packing List:
+                <br />
+            <FormControl 
+                fullWidth
+                variant="standard"
+            >
+                <InputLabel id="packing-list-option-label"></InputLabel>
                 <Select
+                    labelId="packing-list-option-label"
+                    id="packing-list-option"
                     options={groupedOptions}
-                    value={packingListOption} 
-                    placeholder="Choose from Dropdown"
+                    value={option.value} 
+                    renderValue={option.label}
                     required
+                    autoWidth
                     onChange={handleChange}
                 />
+                </FormControl>
             </label>
         </div>
-        <div>
-            <input className="add-trip-btn" type="submit" />
-        </div>
+        <br />
+            <button className="submit-btn">SUBMIT</button>
         </center>
     </form>
+    </Box>
     );
 }
 
