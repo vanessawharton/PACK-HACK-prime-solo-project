@@ -1,5 +1,6 @@
 // hooks
 import { useHistory } from "react-router";
+import Swal from 'sweetalert2';
 
 // styling
 import Card from '@mui/material/Card';
@@ -16,6 +17,23 @@ function PackingListView( {packingList} ) {
     }
 
     const handleDelete = () => {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+            if (result.isConfirmed) {
+                Swal.fire(
+                'Deleted!',
+                'Your file has been deleted.',
+                'success'
+                )
+            }
+            });
         dispatch({ type: 'DELETE_PACKING_LIST', payload: id});
         history.push('/packinglists');
     };

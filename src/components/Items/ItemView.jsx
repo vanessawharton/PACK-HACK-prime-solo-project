@@ -31,7 +31,7 @@ function ItemView( {item} ) {
     return (
         <center>
         <Box sx={{ 
-            width: '90%',
+            width: '82%',
             }}>
             <List>
                 <Divider />
